@@ -1,0 +1,143 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kanske"
+        xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" x:Class="Kanske.InsideDojoWindow"
+        mc:Ignorable="d"
+        Title="InsideDojoWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.3*"/>
+            <ColumnDefinition Width="0.2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="AddJudokaButton" Content="Add Judoka" Grid.Column="5" Grid.Row="0" Click="AddJudokaButton_Click" Margin="0,0,15,0"/>
+        <Button x:Name="LogoutButton" Content="Log out" Grid.Column="6" Grid.Row="0" Click="LogoutButton_Click" Margin="0,0,15,0" />
+        <TextBlock x:Name="JudokaNameTextBlock" Text="" Grid.Column="5" Grid.Row="1" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+        <Button x:Name="EditButton" Content="Edit Judoka" Grid.Column="1" Grid.Row="0" Margin="15,5,15,10" Click="EditButton_Click" />
+        <TextBlock x:Name="DojoNameTextBlock" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+        <TextBox x:Name="SerchTextBox" Text="" Grid.Column="0" Grid.Row="1"/>
+        <Button x:Name="SerchButton" Content="Serch" Grid.Column="1" Grid.Row="1" Margin="15,0,15,0" Click="SerchButton_Click" />
+        <ListBox x:Name="JudokasListbox" Grid.Column="0" Grid.Row="2" Grid.RowSpan="4" />
+        <ListBox x:Name="TechniqesListbox" Grid.Column="5" Grid.ColumnSpan="6" Grid.Row="2" Grid.RowSpan="4" />
+        
+        <StackPanel Grid.Column="4" Grid.Row="2" Grid.RowSpan="4" Margin="0,0,0,0" Orientation="Vertical" >
+            <TextBlock Text="SUTEMI-WASA" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+            <Wpf:PieChart Name="sutemiWazaPiechart" Series="{Binding sutemiWazaSeriesCollection}" DataClick="sutemiWazaPiechart_DataClick" />
+
+            <StackPanel x:Name="addJudokaStackpanel2" Margin="5,105,0,0" Visibility="Hidden">
+                <Button x:Name="cancelJudokaCreationButton" Content="Cancel" Margin="20,0,5,0" Click="cancelJudokaCreationButton_Click"/>
+                <Button x:Name="createJudokaButton" Content="Create Judoka" Background="#FF2AB52A" Margin="5,27,5,5" Click="createJudokaButton_Click" />
+            </StackPanel>
+
+        </StackPanel>
+        
+        <StackPanel Grid.Column="1" Grid.Row="2" Grid.RowSpan="4" HorizontalAlignment="Center">
+            <TextBlock Text="OSAEKOMI-WASA" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+            <Wpf:PieChart Name="osaekomiWazaPiechart" Series="{Binding osaekomiWazaSeriesCollection}" DataClick="osaekomiWazaPiechart_DataClick" Hoverable="False"/>
+            
+            <TextBlock Text="TE-WASA" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+            <Wpf:PieChart Name="teWazaPiechart" Series="{Binding teWazaSeriesCollection}" DataClick="teWazaPiechart_DataClick"/>
+            <StackPanel x:Name="editStackpanel1" Visibility="Hidden" Margin="0,15,0,0" Grid.Column="1" Grid.ColumnSpan="2">
+                <Label Content="First Name"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="JfirstNameTextBox" Text="" Margin="0,0,0,0" Width="70"  />
+                    <Button x:Name="SaveFirstNameButton" Content="Save" Background="#FF2AB52A" Margin="0,0,0,0" Click="SaveFirstNameButton_Click" />
+                </StackPanel>
+                
+                <Label Content="Last Name"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="JlastNameTextBox" Text="" Width="70"/>
+                    <Button x:Name="SaveLastNameButton" Content="Save" Background="#FF2AB52A" Margin="0,0,0,0" Click="SaveLastNameButton_Click"/>
+                </StackPanel>
+                
+                <Label Content="Weight Kg"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                    <TextBox Name="WeightTextBox" Text="" Width="30"/>
+                    <Button Name="WeightMinusButton" Content="-"  Margin="5,5,0,5" Click="WeightMinusButton_Click" Background="#FF14A9E2" />
+                    <Button Name="WeightPlusButton" Content="+" Margin="0,5,0,5" Background="#FFF6C242"/>
+                </StackPanel>
+                <Label Content="Length Cm"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                    <TextBox Name="LengthTextBox" Text="" Width="30"/>
+                    <Button Name="LengthMinusButton" Content="-" Margin="5,5,0,5" Background="#FF14A9E2"/>
+                    <Button Name="LengthPlusButton" Content="+" Margin="0,5,0,5" Background="#FFF6C242"/>
+                </StackPanel>
+                
+            </StackPanel>
+
+            
+
+        </StackPanel>
+        
+        <StackPanel Grid.Column="2" Grid.Row="2" Grid.RowSpan="4" HorizontalAlignment="Center">
+            <TextBlock Text="SHIME-WASA" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+            <Wpf:PieChart Name="shimeWazaPiechart" Series="{Binding shimeWazaSeriesCollection}" DataClick="shimeWazaPiechart_DataClick" />
+            
+
+            <TextBlock Text="KOSHI-WASA" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+            <Wpf:PieChart Name="koshiWazaPiechart" Series="{Binding koshiWazaSeriesCollection}" DataClick="koshiWazaPiechart_DataClick"/>
+
+            <StackPanel x:Name="editStackpanel2" Visibility="Hidden" Margin="5,40,0,0">
+                <Button x:Name="CancelEditButton" Content="Cancel" Margin="20,0,5,0" Click="CancelEditButton_Click"/>
+
+
+                <Button x:Name="DeleteJudokaButton"  Content="Delete Judoka" Background="#FFEF2C2C" Margin="5,100,5,5" Click="DeleteJudokaButton_Click" />
+
+
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel Grid.Column="3" Grid.Row="2" Grid.RowSpan="4" HorizontalAlignment="Center">
+            <TextBlock Text="KANSETSU-WASA" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+            <Wpf:PieChart Name="kansetsuWazaPiechart" Series="{Binding kansetsuWazaSeriesCollection}" DataClick="kansetsuWazaPiechart_DataClick" />
+            
+
+            <TextBlock Text="ASHI-WASA" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+            <Wpf:PieChart Name="ashiWazaPiechart" Series="{Binding ashiWazaSeriesCollection}" DataClick="ashiWazaPiechart_DataClick"/>
+
+            <StackPanel x:Name="addJudokaStackpanel" Visibility="Hidden" Margin="0,15,0,0" Grid.Column="3" Grid.ColumnSpan="4">
+                <Label Content="First Name"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="jNewfirstNameTextBox" Text="" Margin="0,0,0,0" Width="70" />
+                    
+                </StackPanel>
+
+                <Label Content="Last Name"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Name="jNewlastNameTextBox" Text="" Width="70"/>
+                    
+                </StackPanel>
+
+                <Label Content="Weight Kg"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                    <TextBox Text="" Width="30"/>
+                    <Button Content="-"  Margin="5,5,0,5" Background="#FF14A9E2" />
+                    <Button Content="+" Margin="0,5,0,5" Background="#FFF6C242"/>
+                </StackPanel>
+                <Label Content="Length Cm"/>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                    <TextBox Text="" Width="30"/>
+                    <Button Content="-" Margin="5,5,0,5" Background="#FF14A9E2"/>
+                    <Button Content="+" Margin="0,5,0,5" Background="#FFF6C242"/>
+                </StackPanel>
+                
+            </StackPanel>
+            
+
+        </StackPanel>
+    </Grid>
+</Window>

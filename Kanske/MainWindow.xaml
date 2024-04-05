@@ -1,0 +1,48 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kanske"
+        xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" x:Class="Kanske.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Bilder/japan-1805865_1280.jpg"/>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="0.3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1" Width="250" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <!--<Button x:Name="clubButton" Content="Club"/>
+<Button x:Name="judokasButton" Content="Judokas"/>
+<Button x:Name="techniquesButton" Content="Techniques"/>-->
+            <TextBlock x:Name="dojoTextblock" Text="Dojo 道場" Background="DimGray" Opacity="0.8" FontWeight="Bold"/>
+            <TextBox x:Name="dojoTextbox"/>
+            <TextBlock x:Name="passwordTextblock" Text="Password" Background="DimGray" Opacity="0.8" FontWeight="Bold"/>
+            <PasswordBox x:Name="dojoPasswordbox"/>
+            <Button x:Name="LoginButton" Content="Login" Width="50" FontWeight="Bold" Margin="0,8,0,8" Click="LoginButton_Click"/>
+            <Button x:Name="NewDojoButton" Content="New Dojo" Width="70" FontWeight="Bold" Click="NewDojoButton_Click"/>
+
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Width="250" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock x:Name="NewDojoTextblock" Visibility="Hidden" Text="Name" Background="DimGray" Opacity="0.8" FontWeight="Bold"/>
+            <TextBox x:Name="NewDojoTextbox" Visibility="Hidden"/>
+            <TextBlock x:Name="NewPasswordTextblock" Visibility="Hidden" Text="Password" Background="DimGray" Opacity="0.8" FontWeight="Bold"/>
+            <TextBox x:Name="NewPasswordTextbox" Visibility="Hidden"/>
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="CreateButton" Visibility="Hidden" Content="Create" Width="50" FontWeight="Bold" Margin="50,8,0,8" Click="CreateButton_Click"/>
+                <Button x:Name="CancelButton" Visibility="Hidden" Content="Cancel" Width="50" FontWeight="Bold" Margin="20,8,0,8" Click="CancelButton_Click"/>
+            </StackPanel>
+            
+        </StackPanel>
+    </Grid>
+</Window>
